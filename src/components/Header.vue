@@ -8,7 +8,10 @@
         <nav>
           <ul>
             <li>
-              <router-link to="{ name: 'Home'}">Home</router-link>
+              <router-link :to="{ name: 'Home' }">Home</router-link>
+            </li>
+            <li>
+              <a v-on:click="showLoginModal">Login</a>
             </li>
             <li>
               <a href="#"></a>
@@ -19,18 +22,22 @@
           </ul>
         </nav>
       </div>
-      <register-modal></register-modal>
     </header>
+
+
 </template>
 
 <script>
-import Register from './auth/Register'
+import Authentication from './Authentication'
+
   export default {
     name: 'Header',
-    components: {
-      'register-modal': Register
+    methods: {
+      showLoginModal() {
+        this.$emit('clickedLoginModal');
+      }
     }
-  }
+}
 </script>
 
 <style>

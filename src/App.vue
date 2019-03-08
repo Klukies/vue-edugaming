@@ -1,17 +1,34 @@
 <template>
   <div id="app">
-    <app-header></app-header>
+    <login-modal @close="closeModal" v-show="isModalVisible"></login-modal>
+    <app-header @clickedLoginModal="showLoginModal()"></app-header>
     <router-view/>
+
   </div>
 </template>
 
 <script>
-import Header from './components/Header'
+import Header from './components/Header';
+import Authentication from './components/Authentication.vue';
 
 export default {
   name: 'App',
   components: {
     'app-header': Header,
+    'login-modal': Authentication,
+  },
+  data() {
+    return {
+      isModalVisible: false
+    }
+  },
+  methods: {
+    showLoginModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    }
   }
 }
 </script>
@@ -24,5 +41,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.hidden {
+  display: none;
 }
 </style>
