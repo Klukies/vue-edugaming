@@ -11,10 +11,10 @@
               <router-link :to="{ name: 'Home' }">Home</router-link>
             </li>
             <li>
-              <a v-on:click="showLoginModal">Login</a>
+              <a href="#">Coaches</a>
             </li>
             <li>
-              <a href="#"></a>
+              <a @click="showLoginModal">Login</a>
             </li>
             <li>
               <!--<router-link :to="{ name: 'Login' }">Login</router-link>-->
