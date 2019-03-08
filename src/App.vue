@@ -11,7 +11,7 @@ import Header from './components/Header'
 export default {
   name: 'App',
   components: {
-    'app-header': Header
+    'app-header': Header,
   }
 }
 </script>
