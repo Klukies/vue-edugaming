@@ -1,52 +1,68 @@
 <template>
   <div class="modal-backdrop">
-    <div v-show="isLoginShown" class="signup-modal modal">
+    <div v-show="isLoginShown" class="login-modal modal">
       <div class="modal-header">
         <button type="button" class="btn-close" @click="close">x</button>
         <h2>Log in</h2>
         <h3>New to EduGaming? <a @click="showSignInModal">Sign up for free!</a></h3>
       </div>
       <div class="login-form auth-form">
-        <form autocomplete="off" @submit.prevent="register" method="post">
+
+
+
+        <div class="alert alert-danger" v-if="loginError">
+          <p>
+            There was an error, unbale to login.
+          </p>
+        </div>
+
+
+
+        <form autocomplete="off" @submit.prevent="login" method="post">
+
+          <div class="form-field">
+            <label for="loginEmail">Email address</label>
+            <input type="email" id="loginEmail" v-model="email" required/>
+          </div>
+
+          <div class="form-field">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" v-model="password" required/>
+          </div>
+
+          <button type="submit" class="btn submit-btn">Login</button>
 
         </form>
       </div>
 
     </div>
-    <div v-show="isSignUpShown" class="login-modal modal">
-      <div class="modal-header">
-        <button type="button" class="btn-close" @click="close">x</button>
-        <h2>Sign up</h2>
-        <h3>Do you already have an account? <a @click="showLoginModal">Log in!</a></h3>
+    <div v-show="isSignUpShown" class="signup-modal modal">
+        <div class="modal-header">
+          <button type="button" class="btn-close" @click="close">x</button>
+          <h2>Sign up</h2>
+          <h3>Do you already have an account? <a @click="showLoginModal">Log in!</a></h3>
+        </div>
+        <div class="signup-form auth-form">
+          <form autocomplete="off" @submit.prevent="register" method="post">
+            <div class="form-field">
+              <label for="signupName">Name</label>
+              <input type="text" id="signupName" v-model="name" required/>
+            </div>
+
+            <div class="form-field">
+              <label for="signupEmail">Email address</label>
+              <input type="email" id="signupEmail" v-model="email" required/>
+            </div>
+
+            <div class="form-field">
+              <label for="signupPassword">password</label>
+              <input type="password" id="signupPassword" v-model="password" required/>
+            </div>
+
+            <button type="submit" class="btn submit-btn">Sign-Up</button>
+          </form>
+        </div>
       </div>
-      <div class="signup-form auth-form">
-        <form autocomplete="off" @submit.prevent="register" method="post">
-          <div class="alert alert-danger" v-if="error && !success">
-            <p>There was an error, unable to complete registration.</p>
-          </div>
-
-          <div class="form-field" v-bind:class="{ 'has-error':error && errors.name}">
-            <span class="help-block" v-if="error && errors.name">{{ errors.name }}</span>
-            <label for="name">Name</label>
-            <input type="text" id="name" v-model="name" required/>
-          </div>
-
-          <div class="form-field" v-bind:class="{ 'has-error':error && errors.email}">
-            <span class="help-block" v-if="error && errors.email">{{ errors.email }}</span>
-            <label for="email">Email address</label>
-            <input type="email" id="email" v-model="email" required/>
-          </div>
-
-          <div class="form-field" v-bind:class="{ 'has-error':error && errors.password}">
-            <span class="help-block" v-if="error && errors.password">{{ errors.password }}</span>
-            <label for="password">password</label>
-            <input type="password" id="password" v-model="password" required/>
-          </div>
-
-          <button type="submit" class="btn submit-btn">Sign-Up</button>
-        </form>
-      </div>
-    </div>
   </div>
 
 </template>
@@ -56,18 +72,67 @@
     name: 'Authentication',
     data() {
       return {
+        name: '',
+        email: '',
+        password: '',
+        loginEmail: null,
+        loginPassword: null,
+        loginError: false,
+        success: false,
         isLoginShown: true,
         isSignUpShown: false
       }
     },
     methods: {
       close() {
+        this.isLoginShown = true;
+        this.isSignUpShown = false;;
         this.$emit('close');
       },
       showSignInModal() {
-        console.log("showing");
+        this.isLoginShown = false;
+        this.isSignUpShown = true;
+      },
+      showLoginModal() {
+        this.isLoginShown = true;
+        this.isSignUpShown = false;
+      },
+      register() {
+        this.$auth.register({
+          data: {
+            name: this.name,
+            email: this.email,
+            password: this.password
+          },
+          success: function () {
+            this.success = true
+            login()
+          },
+          error: function(resp) {
+            this.error = true;
+            this.errors = resp.respons.data.errors;
+          },
+          redirect: null
+        });
+      },
+      login() {
+        this.$auth.login({
+          params: {
+          email: this.email,
+          password: this.password
+          },
+          success: function (resp) {
+            console.log(resp);
+          },
+          error: function (resp) {
+            console.log(resp);
+          },
+          rememberMe: true,
+          redirect: '/',
+          fetchUser: true,
+        });
       }
-    },
+    }
   };
 </script>
 

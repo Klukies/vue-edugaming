@@ -19,7 +19,7 @@ export default {
   },
 
   created() {
-    this.axios.get(`http://localhost:8000/api/home`)
+    this.axios.get('/home')
     .then(response => {
       this.banners = response.data
     })

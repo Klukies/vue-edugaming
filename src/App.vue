@@ -2,7 +2,9 @@
   <div id="app">
     <login-modal @close="closeModal" v-show="isModalVisible"></login-modal>
     <app-header @clickedLoginModal="showLoginModal()"></app-header>
-    <router-view/>
+    <div v-if="$auth.ready()">
+      <router-view/>
+    </div>
 
   </div>
 </template>
