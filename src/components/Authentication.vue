@@ -7,17 +7,11 @@
         <h3>New to EduGaming? <a @click="showSignInModal">Sign up for free!</a></h3>
       </div>
       <div class="login-form auth-form">
-
-
-
         <div class="alert alert-danger" v-if="loginError">
           <p>
-            There was an error, unbale to login.
+            There was an error, unable to login.
           </p>
         </div>
-
-
-
         <form autocomplete="off" @submit.prevent="login" method="post">
 
           <div class="form-field">
@@ -96,9 +90,6 @@
         name: '',
         email: '',
         password: '',
-        loginEmail: null,
-        loginPassword: null,
-        loginError: false,
         success: false,
         isLoginShown: true,
         isSignUpShown: false
@@ -126,7 +117,6 @@
             password: this.password
           },
           success: function () {
-            this.success = true
             login()
           },
           error: function(resp) {
@@ -142,7 +132,9 @@
           email: this.email,
           password: this.password
           },
-          success: function () {},
+          success: function () {
+            this.$emit('close');
+          },
           error: function () {},
           rememberMe: true,
           redirect: '/',
