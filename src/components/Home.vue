@@ -5,6 +5,9 @@
         <img :src="banner.img_url" />
       </div>
     </div>
+    <div>
+      {{ $auth.user().email }}
+    </div>
   </div>
 </template>
 

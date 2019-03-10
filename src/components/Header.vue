@@ -14,7 +14,8 @@
               <a href="#">Coaches</a>
             </li>
             <li>
-              <a @click="showLoginModal">Login</a>
+              <a v-if="!$auth.check()" @click="showLoginModal">Login</a>
+              <a v-else @click.prevent="$auth.logout()">Logout</a>
             </li>
             <li>
               <!--<router-link :to="{ name: 'Login' }">Login</router-link>-->

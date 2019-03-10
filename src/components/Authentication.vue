@@ -121,12 +121,8 @@
           email: this.email,
           password: this.password
           },
-          success: function (resp) {
-            console.log(resp);
-          },
-          error: function (resp) {
-            console.log(resp);
-          },
+          success: function (resp) {},
+          error: function () {},
           rememberMe: true,
           redirect: '/',
           fetchUser: true,
