@@ -64,8 +64,29 @@
         </div>
       </div>
   </div>
-
 </template>
+
+<style scoped>
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal {
+    background-color: #FFF;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+  }
+</style>
 
 <script>
   export default {
@@ -121,7 +142,7 @@
           email: this.email,
           password: this.password
           },
-          success: function (resp) {},
+          success: function () {},
           error: function () {},
           rememberMe: true,
           redirect: '/',
@@ -131,25 +152,3 @@
     }
   };
 </script>
-
-<style scoped>
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal {
-    background-color: #FFF;
-    overflow-x: auto;
-    display: flex;
-    flex-direction: column;
-    border-radius: 3px;
-  }
-</style>
