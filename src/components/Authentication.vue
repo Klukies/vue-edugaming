@@ -117,7 +117,7 @@
             password: this.password
           },
           success: function () {
-            login()
+            this.login()
           },
           error: function(resp) {
             this.error = true;

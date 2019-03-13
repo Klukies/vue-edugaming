@@ -2,7 +2,7 @@
     <header>
       <div id="header-logo">
         <img src="../assets/finished_logo.png" />
-        EduGaming
+        <h1>EduGaming</h1>
       </div>
       <div id="header-navigation">
         <nav>
@@ -39,5 +39,42 @@ import Authentication from './Authentication'
 }
 </script>
 
-<style>
+<style scoped>
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 3vw;
+}
+
+#header-logo, #header-navigation {
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  padding-left: 1vw;
+}
+
+#header-navigation {
+  width: 30vw;
+}
+
+nav {
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul li {
+  font-size: 1.6rem;
+}
+
 </style>
