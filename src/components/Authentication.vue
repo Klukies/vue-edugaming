@@ -7,11 +7,6 @@
         <h3>New to EduGaming? <a @click="showSignInModal">Sign up for free!</a></h3>
       </div>
       <div class="login-form auth-form">
-        <div class="alert alert-danger" v-if="loginError">
-          <p>
-            There was an error, unable to login.
-          </p>
-        </div>
         <form autocomplete="off" @submit.prevent="login" method="post">
 
           <div class="form-field">
@@ -71,6 +66,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 99;
   }
 
   .modal {
@@ -79,6 +75,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 3px;
+    z-index: 100;
   }
 </style>
 
