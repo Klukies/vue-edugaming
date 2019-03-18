@@ -54,6 +54,29 @@ h1, h2, h3 {
   font-weight: 400;
 }
 
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2vh;
+}
+
+article {
+  padding-top: 6vh;
+  padding-bottom: 6vh;
+  font-size: 1.3rem;
+  line-height: 2.5vh;
+}
+
+.article-wrapper {
+  width: 38vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+article:nth-child(even) {
+  color: #fff;
+  background-color: #3A55B4;
+}
+
 .hidden {
   display: none;
 }

@@ -41,6 +41,7 @@ import Authentication from './Authentication'
 
 <style scoped>
 header {
+  height: 12vh;
   width: 100%;
   display: flex;
   justify-content: space-between;

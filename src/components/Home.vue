@@ -1,27 +1,44 @@
 <template>
   <div id="home">
-    <div class="banners_wrapper">
+    <div class="banners-wrapper">
       <transition-group class="banners" tag="div">
-        <div v-for="banner of banners" class="banner" :key="banner.id">
+        <div v-for="banner of banners" class="banner" :key="banner.game_id">
             <img :src="banner.img_url" />
         </div>
       </transition-group>
       <button class='pause_play' v-bind:class="{playing: isPlaying}" @click="stopSliding"></button>
     </div>
     <article class="method">
-      <h2>Method</h2>
-      <p>
-        EduGaming coaches aren't just coaches - they're mentors.
-        Every single instructor on our platform has passed our rigorous,
-        5-stage application process. We guarantee our pros aren't just top gamers,
-        but also experienced teachers who will help you learn efficiently and effectively.
-      </p>
+      <div class="article-wrapper">
+        <h2>Method</h2>
+        <p>
+          EduGaming coaches aren't just coaches - they're mentors.
+          Every single instructor on our platform has passed our rigorous application process.<br />
+          We guarantee our pros aren't just top gamers,
+          but also experienced teachers who will help you learn efficiently and effectively.
+        </p>
+      </div>
     </article>
     <article class="featured-coaches">
-
+      <div class="article-wrapper">
+        <h2>Featured coaches:</h2>
+        <ul v-for="coach of coaches" class="coaches">
+          <li class="coach">
+            <h3>{{ coach.username }}</h3>
+            <figure>
+              <img :src="coach.img_url" />
+              <figcaption>
+                {{ coach.summary }}
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
     </article>
     <article class="reviews">
-
+      <div class="article-wrapper">
+        <h2>What players are saying:</h2>
+      </div>
     </article>
   <div>
       {{ $auth.user().email }}
@@ -35,6 +52,7 @@ export default {
   data() {
     return {
       banners: [],
+      coaches: [],
       errors: [],
       sliding: null,
       isPlaying: true,
@@ -44,7 +62,8 @@ export default {
   created() {
     this.axios.get('/home')
     .then(response => {
-      this.banners = response.data;
+      this.banners = response.data.games;
+      this.coaches = response.data.coaches;
       this.slideBanner();
     })
     .catch(e => {
@@ -78,17 +97,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.banners-wrapper {
+  height: 88vh;
+}
+
 .banners {
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  width: 100vw;
-  height: 70vh;
+  height: inherit;
 }
 
 .banner {
   transition: transform 0.5s ease-in-out;
+  height: inherit;
 }
 
 .banner:first-of-type {
@@ -100,8 +123,10 @@ export default {
 }
 
 .banner img {
-  height: 100%;
+  height: inherit;
+  width: 100vw;
   margin: auto;
+  object-fit: cover;
 }
 
 .pause_play {
@@ -114,7 +139,7 @@ export default {
   border-style: solid;
   border-width: 37px 0 37px 60px;
   position: relative;
-  bottom: 8vh;
+  bottom: 10vh;
   left: 50%;
   transform: translate(-50%, 0);
 }
