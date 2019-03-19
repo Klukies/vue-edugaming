@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Home from '@/components/Home'
+import Coaches from '@/components/Coaches'
 
 axios.defaults.baseURL = 'http://localhost:8000/api/'
 
@@ -16,7 +17,11 @@ const router = new Router ({
         path: '/',
         name: 'Home',
         component: Home
-      },
+      }, {
+        path: '/coaches',
+        name: 'Coaches',
+        component: Coaches
+      }
     ]
 });
 

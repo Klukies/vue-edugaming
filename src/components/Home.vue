@@ -33,6 +33,7 @@
             </figure>
           </li>
         </ul>
+        <router-link :to="{ name: 'Coaches' }" class="btn">Find my coach</router-link>
       </div>
     </article>
     <article class="reviews">
@@ -99,6 +100,8 @@ export default {
 <style scoped>
 .banners-wrapper {
   height: 88vh;
+  box-sizing: content-box;
+  padding-top: 12vh;
 }
 
 .banners {
@@ -153,5 +156,29 @@ export default {
   border-color: transparent transparent transparent #1F337B;
 }
 
+h3 {
+  margin-bottom: 2vh;
+}
+
+ul {
+  margin-bottom: 3vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+figure {
+  width: 50%;
+  display: flex;
+}
+
+figure img {
+  max-width: 30%;
+  margin-right: 1vw;
+  border-radius: 3px;
+}
+
+figcaption {
+  font-size: 1rem;
+}
 
 </style>

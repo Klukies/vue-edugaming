@@ -5,19 +5,21 @@
     <div class="body" v-if="$auth.ready()">
       <router-view/>
     </div>
-
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
 import Header from './components/Header';
 import Authentication from './components/Authentication.vue';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
   components: {
     'app-header': Header,
     'login-modal': Authentication,
+    'app-footer': Footer,
   },
   data() {
     return {
@@ -73,8 +75,16 @@ article {
 }
 
 article:nth-child(even) {
-  color: #fff;
+  color: #FFF;
   background-color: #3A55B4;
+}
+
+.btn {
+  background-color: #1F337B;
+  color: #FFF;
+  padding: 8px;
+  border-radius: 3px;
+  text-decoration: none;
 }
 
 .hidden {

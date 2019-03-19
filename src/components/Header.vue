@@ -11,7 +11,7 @@
               <router-link :to="{ name: 'Home' }">Home</router-link>
             </li>
             <li>
-              <a href="#">Coaches</a>
+              <router-link :to="{ name: 'Coaches' }">Coaches</router-link>
             </li>
             <li>
               <a v-if="!$auth.check()" @click="showLoginModal">Login</a>
@@ -48,6 +48,9 @@ header {
   padding-top: 2vh;
   padding-bottom: 2vh;
   padding-left: 3vw;
+  position: fixed;
+  background-color: #FFF;
+  z-index: 100;
 }
 
 #header-logo, #header-navigation {
@@ -67,6 +70,7 @@ h1 {
 
 nav {
   width: 100%;
+  text-align: center;
 }
 
 nav ul {
@@ -76,6 +80,34 @@ nav ul {
 
 nav ul li {
   font-size: 1.6rem;
+}
+
+nav a {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+  position: relative;
+}
+
+nav a::after {
+  height: 2px;
+  width: 100%;
+  background: #3A55B4;
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -2px;
+  transform: scaleX(0);
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.router-link-exact-active {
+  border-bottom: 2px solid #3A55B4;
 }
 
 </style>
