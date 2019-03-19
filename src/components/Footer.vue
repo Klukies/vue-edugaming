@@ -1,10 +1,17 @@
 <template>
   <footer>
-    <img src="../assets/finished_logo.png"/>
-    <a :href="`mailto:${infoMail}`">{{ infoMail }}</a>
-    <a :href="`tel:${infoPhone}`">{{ infoPhone }}</a>
-    <div class="social-media">
-
+    <div class="footer-wrapper">
+      <div class="logo">
+        <img src="../assets/finished_logo.png"/>
+      </div>
+      <a :href="`mailto:${infoMail}`">{{ infoMail }}</a>
+      <a :href="`tel:${infoPhone}`">{{ infoPhone }}</a>
+      <div class="social-media">
+        <img src="../assets/facebook.png" alt="facebook"/>
+        <img src="../assets/twitter.png" alt="twitter"/>
+        <img src="../assets/instagram.png" alt="instagram"/>
+        <img src="../assets/twitch.png" alt="twitch"/>
+      </div>
     </div>
   </footer>
 </template>
@@ -20,3 +27,53 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  footer {
+    box-sizing: content-box;
+    background-color: #1F337B;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+  }
+
+  .footer-wrapper, .logo, .social-media {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-wrapper {
+    width: 20vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    max-width: 4vw;
+  }
+
+  .logo img {
+    width: 100%;
+  }
+
+  .social-media {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .social-media img {
+    max-width: 40px;
+    margin-right: 1vw;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 1vh;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

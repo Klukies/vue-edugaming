@@ -46,7 +46,6 @@ header {
   display: flex;
   justify-content: space-between;
   padding-top: 2vh;
-  padding-bottom: 2vh;
   padding-left: 3vw;
   position: fixed;
   background-color: #FFF;
