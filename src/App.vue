@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <login-modal @close="closeModal" v-show="isModalVisible"></login-modal>
-    <app-header @clickedLoginModal="showLoginModal()" class="body"></app-header>
+    <app-header @clickedLoginModal="showLoginModal()"></app-header>
     <div class="body" v-if="$auth.ready()">
       <router-view/>
     </div>
@@ -49,7 +49,10 @@ export default {
   font-weight: 300;
   color: #3A55B4;
   width: 100%;
+}
 
+.body {
+  padding-top: 12vh;
 }
 
 h1, h2, h3 {

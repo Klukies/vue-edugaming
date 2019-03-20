@@ -101,7 +101,6 @@ export default {
 .banners-wrapper {
   height: 88vh;
   box-sizing: content-box;
-  padding-top: 12vh;
 }
 
 .banners {

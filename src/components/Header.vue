@@ -17,9 +17,6 @@
               <a v-if="!$auth.check()" @click="showLoginModal">Login</a>
               <a v-else @click.prevent="$auth.logout()">Logout</a>
             </li>
-            <li>
-              <!--<router-link :to="{ name: 'Login' }">Login</router-link>-->
-            </li>
           </ul>
         </nav>
       </div>
@@ -46,6 +43,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding-top: 2vh;
+  padding-bottom: 2vh;
   padding-left: 3vw;
   position: fixed;
   background-color: #FFF;
@@ -65,6 +63,7 @@ h1 {
 
 #header-navigation {
   width: 30vw;
+  margin-right: 2vw;
 }
 
 nav {

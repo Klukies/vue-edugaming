@@ -1,14 +1,25 @@
 <template>
   <div id="coaches">
-    <div class="searchBar">
-
-    </div>
+    <filter-component></filter-component>
+    <ul>
+      <li v-for="coach in coaches">
+        <coach-component></coach-component>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import FilterComponent from './FilterComponent.vue';
+import Coach from './Coach.vue';
+
 export default {
   name: 'Coaches',
+  components: {
+    'filter-component': FilterComponent,
+    'coach-component': Coach,
+  },
+
   data() {
     return {
       coaches: []
@@ -28,7 +39,4 @@ export default {
 </script>
 
 <style scoped>
-.coaches {
-  padding-top: 12vh;
-}
 </style>
