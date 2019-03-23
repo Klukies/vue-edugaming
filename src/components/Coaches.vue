@@ -1,6 +1,6 @@
 <template>
   <div id="coaches">
-    <filter-component></filter-component>
+    <filter-component @filter="filter($event)"></filter-component>
     <ul>
       <li v-for="coach in coaches">
         <coach-component></coach-component>
@@ -34,6 +34,21 @@ export default {
     .catch((err) => {
       console.log(err);
     });
+  },
+  methods: {
+    filter(filters) {
+      this.axios.post('/coaches/filter', {
+        games: filters[0],
+        prices: filters[1],
+        ratings: filters[2]
+      })
+      .then(response => {
+        this.coaches = response.data.coaches;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
   }
 }
 </script>
