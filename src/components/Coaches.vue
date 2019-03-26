@@ -39,7 +39,7 @@ export default {
     filter(filters) {
       this.axios.post('/coaches/filter', {
         games: filters[0],
-        prices: filters[1],
+        price: filters[1],
         ratings: filters[2]
       })
       .then(response => {
