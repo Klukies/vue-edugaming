@@ -1,11 +1,12 @@
 <template>
   <div id="coaches">
     <filter-component @filter="filter($event)"></filter-component>
-    <ul>
-      <li v-for="coach in coaches">
-        <coach-component></coach-component>
-      </li>
-    </ul>
+    <div class="coaches-list">
+      <coach-component
+        v-bind:coach="coach"
+        v-for="coach in coaches"
+        :key="coach.coach_id"></coach-component>
+    </div>
   </div>
 </template>
 
@@ -29,18 +30,24 @@ export default {
   created() {
     this.axios.get('/coaches')
     .then(response => {
-      this.coaches = response.data.coaches;
+      this.coaches = response.data;
     })
     .catch((err) => {
       console.log(err);
     });
+    this.$emit('fixedFooter');
   },
+
+  beforeDestroy() {
+    this.$emit('fixedFooter');
+  },
+
   methods: {
     filter(filters) {
       this.axios.post('/coaches/filter', {
         games: filters[0],
         price: filters[1],
-        ratings: filters[2]
+        rating: filters[2]
       })
       .then(response => {
         this.coaches = response.data.coaches;
@@ -54,4 +61,17 @@ export default {
 </script>
 
 <style scoped>
+#coaches {
+  display: flex;
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.coaches-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 </style>

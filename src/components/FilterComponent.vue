@@ -10,13 +10,13 @@
       </ul>
       <ul v-else-if="key=='Prices'" v-for="option in filter">
         <li v-for="(key,value) in option">
-          <input @change="applyFilter" type="radio" :id="key" :value="value" v-model="priceToFilter"/>
+          <input @change="applyFilter" @click="unselectPrice(value)" type="radio" :id="key" :value="value" v-model="priceToFilter"/>
           <label :for="key">{{ key }}</label>
         </li>
       </ul>
       <ul v-else v-for="option in filter">
         <li v-for="value in option">
-          <input @change="applyFilter" type="radio" :id="value" :value="value" v-model="ratingToFilter"/>
+          <input @change="applyFilter" @click="unselectRating(value)" type="radio" :id="value" :value="value" v-model="ratingToFilter"/>
           <label :for="value">
             <img v-for="(n, index) in parseInt(value)" src="../assets/star.png">
           </label>
@@ -49,8 +49,19 @@ export default {
     });
   },
   methods: {
+    unselectPrice(price) {
+      if (price == this.priceToFilter) {
+        this.priceToFilter = '';
+        this.applyFilter();
+      }
+    },
+    unselectRating(rating) {
+      if (rating == this.ratingToFilter) {
+        this.ratingToFilter = '';
+        this.applyFilter();
+      }
+    },
     applyFilter() {
-      //todo filter on null values
       this.$emit('filter', [this.gameToFilter, this.priceToFilter, this.ratingToFilter]);
     }
   }
@@ -58,13 +69,23 @@ export default {
 </script>
 
 <style scoped>
+.filters {
+  margin-right: 2vw;
+}
+
 h1 {
   font-size: 2.2rem;
+  margin-bottom: 2vh;
+}
+
+ul {
+  margin-bottom: 2vh;
 }
 
 li {
   max-width: 10vw;
   display: flex;
+  margin-bottom: 0.5vh;
 }
 
 li img {
@@ -73,5 +94,13 @@ li img {
 
 a {
   cursor: pointer;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  margin-right: 0.5vw;
+}
+
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+  color: #3A55B4;
 }
 </style>

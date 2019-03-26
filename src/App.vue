@@ -3,9 +3,9 @@
     <login-modal @close="closeModal" v-show="isModalVisible"></login-modal>
     <app-header @clickedLoginModal="showLoginModal()"></app-header>
     <div class="body" v-if="$auth.ready()">
-      <router-view/>
+      <router-view @fixedFooter="fixedFooter"/>
     </div>
-    <app-footer></app-footer>
+    <app-footer v-bind:class="{ fixed: isFixed}"></app-footer>
   </div>
 </template>
 
@@ -23,7 +23,8 @@ export default {
   },
   data() {
     return {
-      isModalVisible: false
+      isModalVisible: false,
+      isFixed: false
     }
   },
   methods: {
@@ -32,6 +33,9 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+    fixedFooter() {
+      this.isFixed = !this.isFixed;
     }
   }
 }

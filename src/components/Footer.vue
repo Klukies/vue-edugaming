@@ -34,6 +34,12 @@ export default {
     background-color: #1F337B;
     padding-top: 1vh;
     padding-bottom: 1vh;
+    width: 100%;
+  }
+
+  .fixed {
+    position: fixed;
+    bottom: 0vh;
   }
 
   .footer-wrapper, .logo, .social-media {
