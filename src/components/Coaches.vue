@@ -50,12 +50,12 @@ export default {
         rating: filters[2]
       })
       .then(response => {
-        this.coaches = response.data.coaches;
+        this.coaches = response.data;
       })
       .catch((err) => {
         console.log(err);
       });
-    }
+    },
   }
 }
 </script>
@@ -70,8 +70,10 @@ export default {
 
 .coaches-list {
   width: 100%;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 </style>

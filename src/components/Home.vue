@@ -22,8 +22,8 @@
     <article class="featured-coaches">
       <div class="article-wrapper">
         <h2>Featured coaches:</h2>
-        <ul v-for="coach of coaches" class="coaches">
-          <li class="coach">
+        <ul class="coaches">
+          <li class="coach" v-for="coach of coaches" >
             <h3>{{ coach.username }}</h3>
             <figure>
               <img :src="coach.img_url" />
@@ -165,13 +165,18 @@ ul {
   justify-content: space-between;
 }
 
-figure {
+.coach {
   width: 50%;
+}
+
+figure {
+  width: 100%;
   display: flex;
 }
 
 figure img {
-  max-width: 30%;
+  max-width: 100px;
+  height: auto;
   margin-right: 1vw;
   border-radius: 3px;
 }

@@ -97,4 +97,8 @@ article:nth-child(even) {
 .hidden {
   display: none;
 }
+
+.datetimepicker .datepicker {
+  border-radius: 3px !important;
+}
 </style>
