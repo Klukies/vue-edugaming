@@ -3,7 +3,7 @@
     <div class="banners-wrapper">
       <transition-group class="banners" tag="div">
         <div v-for="banner of banners" class="banner" :key="banner.game_id">
-            <img :src="banner.img_url" />
+            <img :src="banner.img_url" @click="stopSliding" />
         </div>
       </transition-group>
       <button class='pause_play' v-bind:class="{playing: isPlaying}" @click="stopSliding"></button>
@@ -41,9 +41,6 @@
         <h2>What players are saying:</h2>
       </div>
     </article>
-  <div>
-      {{ $auth.user().email }}
-    </div>
   </div>
 </template>
 
