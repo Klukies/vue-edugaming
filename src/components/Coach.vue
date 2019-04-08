@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'coach', params: {username: coach.username} }">
       <div class="coach-header">
         <div class="rating">
-          <div v-if="coach.average_rating !== null">
+          <div v-if="showCoach">
             <img v-for="(n, index) in parseInt(coach.average_rating)" src="../assets/star.png" />
           </div>
           <p v-else>Unrated</p>
@@ -30,6 +30,18 @@ export default {
   props: {
     coach: Object,
   },
+
+  data() {
+    return {
+      showCoach: false,
+    }
+  },
+
+  created() {
+    if (this.coach.average_rating !== null) {
+      this.showCoach = true;
+    }
+  }
 }
 </script>
 

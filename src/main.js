@@ -5,7 +5,10 @@ import App from './App';
 import router from './router';
 import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
 import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
+import VeeValidate from 'vee-validate';
+
 Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
+Vue.use(VeeValidate);
 
 require('./assets/css/reset.css');
 

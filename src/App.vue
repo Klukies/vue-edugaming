@@ -59,6 +59,10 @@ export default {
   padding-top: 12vh;
 }
 
+#coaches, .coach-full {
+  padding-top: 4vh;
+}
+
 h1, h2, h3 {
   font-weight: 400;
 }
@@ -92,6 +96,7 @@ article:nth-child(even) {
   padding: 8px;
   border-radius: 3px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .hidden {

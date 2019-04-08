@@ -48,6 +48,7 @@ header {
   position: fixed;
   background-color: #FFF;
   z-index: 100;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.35);
 }
 
 #header-logo, #header-navigation {
