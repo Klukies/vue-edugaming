@@ -1,25 +1,25 @@
 <template>
   <div id="app">
-    <login-modal @close="closeModal" v-show="isModalVisible"></login-modal>
-    <app-header @clickedLoginModal="showLoginModal()"></app-header>
+    <AuthenticationComponent @close="closeModal" v-show="isModalVisible"></AuthenticationComponent>
+    <HeaderComponent @clickedLoginModal="showLoginModal()"></HeaderComponent>
     <div class="body" v-if="$auth.ready()">
       <router-view @fixedFooter="fixedFooter"/>
     </div>
-    <app-footer v-bind:class="{ fixed: isFixed}"></app-footer>
+    <FooterComponent v-bind:class="{ fixed: isFixed}"></FooterComponent>
   </div>
 </template>
 
 <script>
-import Header from './components/Header';
-import Authentication from './components/Authentication.vue';
-import Footer from './components/Footer';
+import HeaderComponent from './components/layout/HeaderComponent.vue';
+import AuthenticationComponent from './components/AuthenticationComponent.vue';
+import FooterComponent from './components/layout/FooterComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    'app-header': Header,
-    'login-modal': Authentication,
-    'app-footer': Footer,
+    'HeaderComponent': HeaderComponent,
+    'AuthenticationComponent': AuthenticationComponent,
+    'FooterComponent': FooterComponent,
   },
   data() {
     return {
@@ -77,6 +77,10 @@ article {
   padding-bottom: 6vh;
   font-size: 1.3rem;
   line-height: 2.5vh;
+}
+
+button {
+  font: inherit;
 }
 
 .article-wrapper {

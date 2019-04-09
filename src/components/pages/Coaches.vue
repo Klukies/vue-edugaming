@@ -1,24 +1,24 @@
 <template>
   <div id="coaches">
-    <filter-component @filter="filter($event)"></filter-component>
+    <FilterComponent @filter="filter($event)"></FilterComponent>
     <div class="coaches-list">
-      <coach-component
+      <CoachListComponent
         v-bind:coach="coach"
         v-for="coach in coaches"
-        :key="coach.coach_id"></coach-component>
+        :key="coach.coach_id"></CoachListComponent>
     </div>
   </div>
 </template>
 
 <script>
-import FilterComponent from './FilterComponent.vue';
-import Coach from './Coach.vue';
+import FilterComponent from './../FilterComponent.vue';
+import CoachListComponent from './../CoachListComponent.vue';
 
 export default {
-  name: 'Coaches',
+  name: 'CoachesComponent',
   components: {
-    'filter-component': FilterComponent,
-    'coach-component': Coach,
+    'FilterComponent': FilterComponent,
+    'CoachListComponent': CoachListComponent,
   },
 
   data() {
@@ -33,7 +33,7 @@ export default {
       this.coaches = response.data;
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
     this.$emit('fixedFooter');
   },
@@ -53,7 +53,7 @@ export default {
         this.coaches = response.data;
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
     },
   }
@@ -61,19 +61,5 @@ export default {
 </script>
 
 <style scoped>
-#coaches {
-  display: flex;
-  width: 60vw;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.coaches-list {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
+@import './../../assets/css/coaches.css';
 </style>

@@ -1,0 +1,62 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 102;
+}
+
+.modal {
+  background-color: #FFF;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  z-index: 100;
+  width: 20vw;
+  padding-bottom: 2vh;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vh;
+  padding-top: 2vh;
+}
+
+.modal-header, .review-form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.buttons {
+  width: 100%;
+}
+
+.btn, .confirm-button {
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+  border: 1px solid #1F337B !important;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: 15vh;
+  resize: none;
+  padding: 1vh;;
+  margin-bottom: 2vh;
+  font: inherit;
+}

@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import Home from '@/components/Home'
-import Coaches from '@/components/Coaches'
-import CoachFullComponent from '@/components/CoachFullComponent'
+import Home from '@/components/pages/Home'
+import Coaches from '@/components/pages/Coaches'
+import Coach from '@/components/pages/Coach'
 
 axios.defaults.baseURL = 'http://localhost:8000/api/'
 
@@ -24,8 +24,8 @@ const router = new Router ({
         component: Coaches
       }, {
         path: '/coaches/:username',
-        name: 'coach',
-        component: CoachFullComponent
+        name: 'Coach',
+        component: Coach
       }
     ]
 });

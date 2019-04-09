@@ -100,7 +100,7 @@
 
 <script>
 export default {
-  name: 'Authentication',
+  name: 'AuthenticationComponent',
   data() {
     return {
       name: '',
@@ -174,7 +174,7 @@ export default {
         },
         error: function() {},
         rememberMe: true,
-        redirect: '/',
+        redirect: null,
         fetchUser: true,
       });
     },
@@ -211,151 +211,5 @@ export default {
 </script>
 
 <style scoped>
-button {
-  width: 100%;
-  border: 0;
-  font-size: 1.3rem;
-}
-
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 102;
-}
-
-.modal {
-  background-color: #FFF;
-  overflow-x: auto;
-  display: flex;
-  flex-direction: column;
-  border-radius: 3px;
-  z-index: 100;
-  width: 20vw;
-  padding-bottom: 3vh;
-}
-
-a {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.modal-header, .auth-form {
-  text-align: center;
-}
-
-.modal-header, .auth-form {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.auth-form {
-  text-align: left;
-}
-
-h3 {
-  margin-bottom: 5vh;
-}
-
-h3, label {
-  font-size: 1.3rem;
-}
-
-label, input {
-  width: 100%;
-}
-
-span {
-  display: block;
-  transition: transform .2s ease-in-out;
-}
-
-label {
-  position: absolute;
-  display: block;
-  transition: transform .2s ease-in-out;
-}
-
-input[type=text], input[type=password] {
-  font-size: 18px;
-  height: 36px;
-  border: 0;
-  border-bottom: 1px solid #3A55B4;
-  margin-bottom: 5vh;
-}
-
-.focused {
-  transform: translateY(-18px);
-}
-
-.error {
-  color: #bb3333;
-}
-
-div.x {
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-}
-
-.x {
-  position: relative;
-  overflow: hidden;
-  background: #3A55B4;
-  border-radius: 2px;
-  border: solid 2px #fff;
-  transition: all 0.3s ease-out;
-  cursor: pointer;
-}
-
-.x.medium {
-  width: 24px;
-  height: 24px;
-  margin-left: calc(100% - 30px);
-  margin-top: 4px;
-}
-
-.x.flop:hover {
-  background: #bb3333;
-  transform: rotate(90deg);
-}
-
-.x b {
-  display: block;
-  position: absolute;
-  height: 0;
-  width: 0;
-  padding: 0;
-  margin: 0;
-}
-
-.x.medium b {
-  border: solid 10px rgba(255, 255, 255, 0);
-}
-
-.x b:nth-child(1) {
-  border-top-color: #fff;
-  top: -2px;
-}
-
-.x b:nth-child(2) {
-  border-left-color: #fff;
-  left: -2px;
-}
-
-.x b:nth-child(3) {
-  border-bottom-color: #fff;
-  bottom: -2px;
-}
-
-.x b:nth-child(4) {
-  border-right-color: #fff;
-  right: -2px;
-}
+@import './../assets/css/authentication.css';
 </style>

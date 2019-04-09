@@ -69,38 +69,5 @@ export default {
 </script>
 
 <style scoped>
-.filters {
-  margin-right: 2vw;
-}
-
-h1 {
-  font-size: 2.2rem;
-  margin-bottom: 2vh;
-}
-
-ul {
-  margin-bottom: 2vh;
-}
-
-li {
-  max-width: 10vw;
-  display: flex;
-  margin-bottom: 0.5vh;
-}
-
-li img {
-  max-width: 20px;
-}
-
-a {
-  cursor: pointer;
-}
-
-input[type="checkbox"], input[type="radio"] {
-  margin-right: 0.5vw;
-}
-
-input[type="checkbox"]:checked, input[type="radio"]:checked {
-  color: #3A55B4;
-}
+@import './../assets/css/filter.css';
 </style>

@@ -8,7 +8,7 @@
         <h2>{{ coach.username }}</h2>
         <div class="rating">
           <div v-if="showRating">
-            <img v-for="(n, index) in parseInt(coach.average_rating)" src="../assets/images/star.png" />
+            <img v-for="(n, index) in parseInt(coach.average_rating)" src="../../assets/images/star.png" />
           </div>
           <h3 v-else>Unrated</h3>
         </div>
@@ -30,6 +30,7 @@
       v-bind:minDate="dateNow"
       v-bind:format="'YYYY-MM-DD HH:mm'"
       v-bind:color="'#1F337B'"
+      v-bind:no-keyboard="true"
       id="calendar">
       </VueCtkDateTimePicker>
       <a @click.prevent="makeReservation" class="btn">Reserve my coach</a>
@@ -37,25 +38,28 @@
     <div class="reviews">
       <h2>Reviews</h2>
       <ul class="review-list" v-if='reviews.length'>
-        <review-component
+        <ReviewComponent
           v-bind:review="review"
           v-for="review in reviews"
           :key="review.review_id">
-          </review-component>
+          </ReviewComponent>
       </ul>
       <p v-else class="no-reviews">Coach doesn't have any reviews yet.</p>
       <a @click.prevent='makeReview' class="btn">Leave a review</a>
+      <CreateReviewComponent @closeReviewModal="closeReviewModal()" v-show="showCreateForm"></CreateReviewComponent>
     </div>
   </div>
 </template>
 
 <script>
-import ReviewComponent from './ReviewComponent.vue';
+import ReviewComponent from './../ReviewComponent.vue';
+import CreateReviewComponent from './../CreateReviewComponent';
 
 export default {
-  name: 'CoachFullComponent',
+  name: 'Coach',
   components: {
-    'review-component': ReviewComponent
+    'ReviewComponent': ReviewComponent,
+    'CreateReviewComponent': CreateReviewComponent
   },
 
   data() {
@@ -67,6 +71,7 @@ export default {
       showRating: false,
       dateNow: this.getDate(),
       reviews: [],
+      showCreateForm: false,
     }
   },
 
@@ -108,52 +113,17 @@ export default {
       let month = toTwoDigits(today.getMonth() + 1);
       let day = toTwoDigits(today.getDate());
       return `${year}-${month}-${day}`;
+    },
+    makeReview() {
+      this.showCreateForm = !this.showCreateForm;
+    },
+    closeReviewModal() {
+      this.showCreateForm = !this.showCreateForm;
     }
   }
 }
 </script>
 
 <style scoped>
-.coach-full {
-  width: 60vw;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.coach-header, .coach-profile, .reservation {
-  margin-bottom: 5vh;
-}
-
-.coach-header {
-  display: flex;
-}
-
-.coach-image {
-  max-width: 300px;
-  margin-right: 1vw;
-}
-
-.rating, .reviews {
-  margin-bottom: 2vh;
-}
-
-.coach-image img {
-  width: 100%;
-}
-
-#calendar, .reservation-error, .reservation-message, .no-reviews {
-  margin-bottom: 2vh;
-}
-
-.reservation-error, .reservation-message {
-  font-weight: bold;
-}
-
-.reservation-error {
-  color: red;
-}
-
-.reservation-message {
-  color: green;
-}
+@import './../../assets/css/coach.css';
 </style>
