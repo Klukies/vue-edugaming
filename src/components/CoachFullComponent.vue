@@ -8,7 +8,7 @@
         <h2>{{ coach.username }}</h2>
         <div class="rating">
           <div v-if="showRating">
-            <img v-for="(n, index) in parseInt(coach.average_rating)" src="../assets/star.png" />
+            <img v-for="(n, index) in parseInt(coach.average_rating)" src="../assets/images/star.png" />
           </div>
           <h3 v-else>Unrated</h3>
         </div>

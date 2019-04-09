@@ -1,7 +1,7 @@
 <template>
     <header>
       <div id="header-logo">
-        <img src="../assets/finished_logo.png" />
+        <img src="../assets/images/finished_logo.png" />
         <h1>EduGaming</h1>
       </div>
       <div id="header-navigation">

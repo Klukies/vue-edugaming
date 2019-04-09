@@ -4,7 +4,7 @@
       <div class="coach-header">
         <div class="rating">
           <div v-if="showCoach">
-            <img v-for="(n, index) in parseInt(coach.average_rating)" src="../assets/star.png" />
+            <img v-for="(n, index) in parseInt(coach.average_rating)" src="../assets/images/star.png" />
           </div>
           <p v-else>Unrated</p>
         </div>

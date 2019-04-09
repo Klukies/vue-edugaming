@@ -2,15 +2,15 @@
   <footer>
     <div class="footer-wrapper">
       <div class="logo">
-        <img src="../assets/finished_logo.png"/>
+        <img src="../assets/images/finished_logo.png"/>
       </div>
       <a :href="`mailto:${infoMail}`">{{ infoMail }}</a>
       <a :href="`tel:${infoPhone}`">{{ infoPhone }}</a>
       <div class="social-media">
-        <img src="../assets/facebook.png" alt="facebook"/>
-        <img src="../assets/twitter.png" alt="twitter"/>
-        <img src="../assets/instagram.png" alt="instagram"/>
-        <img src="../assets/twitch.png" alt="twitch"/>
+        <img src="../assets/images/facebook.png" alt="facebook"/>
+        <img src="../assets/images/twitter.png" alt="twitter"/>
+        <img src="../assets/images/instagram.png" alt="instagram"/>
+        <img src="../assets/images/twitch.png" alt="twitch"/>
       </div>
     </div>
   </footer>

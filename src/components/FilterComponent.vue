@@ -18,7 +18,7 @@
         <li v-for="value in option">
           <input @change="applyFilter" @click="unselectRating(value)" type="radio" :id="value" :value="value" v-model="ratingToFilter"/>
           <label :for="value">
-            <img v-for="(n, index) in parseInt(value)" src="../assets/star.png">
+            <img v-for="(n, index) in parseInt(value)" src="../assets/images/star.png">
           </label>
         </li>
       </ul>
