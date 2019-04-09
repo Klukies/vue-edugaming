@@ -16,7 +16,8 @@
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-ctk-date-time-picker": "^2.0.9",
-    "vue-router": "^3.0.3"
+    "vue-router": "^3.0.3",
+    "vue-star-rating": "^1.6.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

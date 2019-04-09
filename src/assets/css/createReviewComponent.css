@@ -34,10 +34,15 @@ h2 {
   padding-top: 2vh;
 }
 
-.modal-header, .review-form {
+.modal-header, .review-form, span {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
+}
+
+span {
+  color: #bb3333;
+  margin-bottom: 1vh;
 }
 
 .buttons {

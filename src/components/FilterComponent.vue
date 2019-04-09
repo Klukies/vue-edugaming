@@ -18,7 +18,13 @@
         <li v-for="value in option">
           <input @change="applyFilter" @click="unselectRating(value)" type="radio" :id="value" :value="value" v-model="ratingToFilter"/>
           <label :for="value">
-            <img v-for="(n, index) in parseInt(value)" src="../assets/images/star.png">
+            <StarRatingComponent
+            :show-rating="false"
+            :star-size="22"
+            :inactive-color="'transparent'"
+            :rating="value"
+            :read-only="true">
+            </StarRatingComponent>
           </label>
         </li>
       </ul>
@@ -27,9 +33,13 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating';
+
 export default {
   name: 'FilterComponent',
-
+  components: {
+    "StarRatingComponent": StarRating
+  },
   data() {
     return {
       filters: [],

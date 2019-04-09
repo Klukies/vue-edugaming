@@ -25,12 +25,12 @@
       <p v-show='reservationError !== ""' class="reservation-error">{{ this.reservationError }}</p>
       <VueCtkDateTimePicker
       v-model="reservation"
-      v-bind:inline="true"
-      v-bind:minuteInterval="30"
-      v-bind:minDate="dateNow"
-      v-bind:format="'YYYY-MM-DD HH:mm'"
-      v-bind:color="'#1F337B'"
-      v-bind:no-keyboard="true"
+      :inline="true"
+      :minuteInterval="30"
+      :minDate="dateNow"
+      :format="'YYYY-MM-DD HH:mm'"
+      :color="'#1F337B'"
+      :no-keyboard="true"
       id="calendar">
       </VueCtkDateTimePicker>
       <a @click.prevent="makeReservation" class="btn">Reserve my coach</a>
@@ -39,14 +39,17 @@
       <h2>Reviews</h2>
       <ul class="review-list" v-if='reviews.length'>
         <ReviewComponent
-          v-bind:review="review"
-          v-for="review in reviews"
-          :key="review.review_id">
-          </ReviewComponent>
+        v-bind:review="review"
+        v-for="review in reviews"
+        :key="review.review_id">
+        </ReviewComponent>
       </ul>
       <p v-else class="no-reviews">Coach doesn't have any reviews yet.</p>
       <a @click.prevent='makeReview' class="btn">Leave a review</a>
-      <CreateReviewComponent @closeReviewModal="closeReviewModal()" v-show="showCreateForm"></CreateReviewComponent>
+      <CreateReviewComponent
+      @closeReviewModal="closeReviewModal()"
+      @sendReview="sendReview($event)"
+      v-show="showCreateForm"></CreateReviewComponent>
     </div>
   </div>
 </template>
@@ -119,6 +122,15 @@ export default {
     },
     closeReviewModal() {
       this.showCreateForm = !this.showCreateForm;
+    },
+    sendReview(reviewData) {
+      this.axios.post(`/review`, {
+        coach_id: this.coach.coach_id,
+        rating: reviewData.rating,
+        review: reviewData.review
+      })
+      .then(response => {closeReviewModal()})
+      .catch(err => console.error(err));
     }
   }
 }
