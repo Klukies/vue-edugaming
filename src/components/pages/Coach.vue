@@ -1,5 +1,6 @@
 <template>
   <div class="coach-full">
+
     <div class="coach-header">
       <div class="coach-image">
         <img :src="coach.img_url"/>
@@ -15,11 +16,13 @@
         <p>{{ coach.summary }}</p>
       </div>
     </div>
+
     <div class="coach-profile">
       <h2>Coach Profile</h2>
       <p v-if="coach.description !== null">{{ coach.description }}</p>
       <p v-else>Coach hasn't given a description to his profile yet</p>
     </div>
+
     <div class="reservation">
       <p v-show='reservationMessage !== ""' class="reservation-message">{{ this.reservationMessage}} </p>
       <p v-show='reservationError !== ""' class="reservation-error">{{ this.reservationError }}</p>
@@ -35,6 +38,7 @@
       </VueCtkDateTimePicker>
       <a @click.prevent="makeReservation" class="btn">Reserve my coach</a>
     </div>
+
     <div class="reviews">
       <h2>Reviews</h2>
       <ul class="review-list" v-if='reviews.length'>
@@ -51,6 +55,7 @@
       @sendReview="sendReview($event)"
       v-show="showCreateForm"></CreateReviewComponent>
     </div>
+
   </div>
 </template>
 

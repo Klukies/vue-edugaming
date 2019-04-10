@@ -22,7 +22,7 @@
             :show-rating="false"
             :star-size="22"
             :inactive-color="'transparent'"
-            :rating="value"
+            :rating="parseInt(value)"
             :read-only="true">
             </StarRatingComponent>
           </label>
@@ -45,7 +45,7 @@ export default {
       filters: [],
       gameToFilter: [],
       priceToFilter: '',
-      ratingToFilter: ''
+      ratingToFilter: -1
     }
   },
 
@@ -67,7 +67,7 @@ export default {
     },
     unselectRating(rating) {
       if (rating == this.ratingToFilter) {
-        this.ratingToFilter = '';
+        this.ratingToFilter = -1;
         this.applyFilter();
       }
     },
