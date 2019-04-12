@@ -9,7 +9,13 @@
         <h2>{{ coach.username }}</h2>
         <div class="rating">
           <div v-if="showRating">
-            <img v-for="(n, index) in parseInt(coach.average_rating)" src="../../assets/images/star.png" />
+              <StarRatingComponent
+              :increment="0.01"
+              :show-rating="false"
+              :star-size="25"
+              :rating="parseFloat(coach.average_rating)"
+              :read-only="true">
+              </StarRatingComponent>
           </div>
           <h3 v-else>Unrated</h3>
         </div>
@@ -41,9 +47,9 @@
 
     <div class="reviews">
       <h2>Reviews</h2>
-      <ul class="review-list" v-if='reviews.length'>
+      <ul class="review-list" v-if='showReviews'>
         <ReviewComponent
-        v-bind:review="review"
+        :review="review"
         v-for="review in reviews"
         :key="review.review_id">
         </ReviewComponent>
@@ -62,23 +68,26 @@
 <script>
 import ReviewComponent from './../ReviewComponent.vue';
 import CreateReviewComponent from './../CreateReviewComponent';
+import StarRating from 'vue-star-rating';
 
 export default {
   name: 'Coach',
   components: {
     'ReviewComponent': ReviewComponent,
-    'CreateReviewComponent': CreateReviewComponent
+    'CreateReviewComponent': CreateReviewComponent,
+    'StarRatingComponent': StarRating
   },
 
   data() {
     return {
       coach: [],
+      reviews: [],
       reservation: '',
       reservationError: '',
       reservationMessage: '',
       showRating: false,
+      showReviews: false,
       dateNow: this.getDate(),
-      reviews: [],
       showCreateForm: false,
     }
   },
@@ -93,8 +102,12 @@ export default {
     this.axios.get(`/coaches/${this.$route.params.username}`)
     .then(response => {
       this.coach = response.data[0];
+      this.reviews = this.coach.reviews;
       if (this.coach.average_rating !== null) {
         this.showRating = true;
+      }
+      if (this.reviews.length) {
+        this.showReviews = true;
       }
     })
     .catch(error => {console.log(error)});
@@ -134,7 +147,10 @@ export default {
         rating: reviewData.rating,
         review: reviewData.review
       })
-      .then(response => {closeReviewModal()})
+      .then(response => {
+        this.reviews = response.data;
+        this.closeReviewModal();
+      })
       .catch(err => console.error(err));
     }
   }

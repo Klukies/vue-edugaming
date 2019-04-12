@@ -27,9 +27,10 @@
             <h3>{{ coach.username }}</h3>
             <figure>
               <img :src="coach.img_url" />
-              <figcaption>
+              <figcaption v-if='coach.summary !== null'>
                 {{ coach.summary }}
               </figcaption>
+              <figcaption v-else>Coach hasn't given a summary yet.</figcaption>
             </figure>
           </li>
         </ul>

@@ -4,7 +4,13 @@
       <div class="coach-header">
         <div class="rating">
           <div v-if="showCoach">
-            <img v-for="(n, index) in parseInt(coach.average_rating)" src="../assets/images/star.png" />
+            <StarRatingComponent
+            :increment="0.01"
+            :show-rating="false"
+            :star-size="18"
+            :rating="parseFloat(coach.average_rating)"
+            :read-only="true">
+            </StarRatingComponent>
           </div>
           <p v-else>Unrated</p>
         </div>
@@ -18,15 +24,21 @@
           {{ coach.username }}
         </figcaption>
       </figure>
-      <p>{{ coach.summary }}</p>
+      <p v-if='coach.summary !== null'>{{ coach.summary }}</p>
+      <p v-else>Coach hasn't given a summary yet.</p>
     </router-link>
   </div>
 </template>
 
 
 <script>
+import StarRating from 'vue-star-rating';
+
 export default {
   name: 'CoachListComponent',
+  components: {
+    "StarRatingComponent": StarRating
+  },
   props: {
     coach: Object,
   },
