@@ -1,1 +1,0 @@
-#Import database and run Node.js app to test signup/login. Open wireframes & prototype in Adobe XD
