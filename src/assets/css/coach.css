@@ -1,0 +1,50 @@
+.coach-full {
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.coach-header, .coach-profile, .reservation {
+  margin-bottom: 5vh;
+}
+
+.coach-header {
+  display: flex;
+}
+
+.coach-image {
+  max-width: 300px;
+  margin-right: 1vw;
+}
+
+.rating, .reviews {
+  margin-bottom: 2vh;
+}
+
+.coach-image img {
+  width: 100%;
+}
+
+#calendar, .reservation-error, .reservation-message, .no-reviews {
+  margin-bottom: 2vh;
+}
+
+.reservation-error, .reservation-message {
+  font-weight: bold;
+}
+
+.reservation-error {
+  color: red;
+}
+
+.reservation-message {
+  color: green;
+}
+
+.review-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 3vh;
+}
