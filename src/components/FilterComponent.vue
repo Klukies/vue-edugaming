@@ -78,6 +78,5 @@ export default {
 }
 </script>
 
-<style scoped>
-@import './../assets/css/filter.css';
+<style scoped src='./../assets/css/filter.css'>
 </style>

@@ -157,6 +157,5 @@ export default {
 }
 </script>
 
-<style scoped>
-@import './../assets/css/coach.css';
+<style scoped src='./../assets/css/coach.css'>
 </style>

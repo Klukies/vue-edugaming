@@ -28,6 +28,5 @@ export default {
 }
 </script>
 
-<style scoped>
-@import './../../assets/css/footer.css';
+<style scoped src='./../../assets/css/footer.css'>
 </style>

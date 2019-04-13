@@ -57,6 +57,5 @@ export default {
 }
 </script>
 
-<style scoped>
-@import './../assets/css/coachList.css';
+<style scoped src='./../assets/css/coachList.css'>
 </style>

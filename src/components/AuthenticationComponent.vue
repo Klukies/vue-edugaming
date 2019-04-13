@@ -18,7 +18,7 @@
           v-model="email"
           @input="checkAutocomplete()"
           @click="focus($event)"
-          @blur="blur($event)"
+          @blur="blur()"
           name="Email"
           v-validate="'required|email'"/>
         </div>
@@ -32,7 +32,7 @@
           v-model="password"
           @input="checkAutocomplete()"
           @click="focus($event)"
-          @blur="blur($event)"
+          @blur="blur()"
           name="Password"
           v-validate="'required'"/>
         </div>
@@ -58,7 +58,7 @@
           v-model="name"
           @input="checkAutocomplete()"
           @click="focus($event)"
-          @blur="blur($event)"
+          @blur="blur()"
           name="Name"
           v-validate="'required'"/>
         </div>
@@ -72,7 +72,7 @@
           v-model="email"
           @input="checkAutocomplete()"
           @click="focus($event)"
-          @blur="blur($event)"
+          @blur="blur()"
           name="Email"
           v-validate="'required|email'"/>
         </div>
@@ -86,7 +86,7 @@
           v-model="password"
           @input="checkAutocomplete()"
           @click="focus($event)"
-          @blur="blur($event)"
+          @blur="blur()"
           name="Password"
           v-validate="'required'"/>
         </div>
@@ -123,7 +123,7 @@ export default {
       this.isLoginShown = false;
       this.isSignUpShown = true;
       this.isLoginShown = true;
-      this.isSignUpShown = false;;
+      this.isSignUpShown = false;
       this.$emit('close');
     },
     showSignInModal() {
@@ -187,7 +187,7 @@ export default {
         this.isNameFocused = true;
       }
     },
-    blur($event) {
+    blur() {
       if (this.email === '') {
         this.isEmailFocused = false;
       }
@@ -210,6 +210,5 @@ export default {
 };
 </script>
 
-<style scoped>
-@import './../assets/css/authentication.css';
+<style scoped src='./../assets/css/authentication.css'>
 </style>

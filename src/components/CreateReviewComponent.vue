@@ -67,6 +67,5 @@ export default {
 }
 </script>
 
-<style scoped>
-@import './../assets/css/createReviewComponent.css';
+<style scoped src='./../assets/css/createReviewComponent.css'>
 </style>

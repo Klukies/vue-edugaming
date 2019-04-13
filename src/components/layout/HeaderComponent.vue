@@ -34,6 +34,5 @@ export default {
 }
 </script>
 
-<style scoped>
-@import './../../assets/css/header.css';
+<style scoped src='./../../assets/css/header.css'>
 </style>

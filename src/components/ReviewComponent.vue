@@ -20,6 +20,5 @@ export default {
 }
 </script>
 
-<style scoped>
-@import './../assets/css/reviewComponent.css';
+<style scoped src='./../assets/css/reviewComponent.css'>
 </style>
