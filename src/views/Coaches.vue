@@ -35,11 +35,6 @@ export default {
     .catch((err) => {
       console.error(err);
     });
-    this.$emit('fixedFooter');
-  },
-
-  beforeDestroy() {
-    this.$emit('fixedFooter');
   },
 
   methods: {

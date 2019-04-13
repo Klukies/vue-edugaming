@@ -7,10 +7,18 @@
       <a :href="`mailto:${infoMail}`">{{ infoMail }}</a>
       <a :href="`tel:${infoPhone}`">{{ infoPhone }}</a>
       <div class="social-media">
-        <img src="../../assets/images/facebook.png" alt="facebook"/>
-        <img src="../../assets/images/twitter.png" alt="twitter"/>
-        <img src="../../assets/images/instagram.png" alt="instagram"/>
-        <img src="../../assets/images/twitch.png" alt="twitch"/>
+        <div class="social-media-wrapper">
+          <img src="../../assets/images/facebook.png" alt="facebook"/>
+        </div>
+        <div class="social-media-wrapper">
+          <img src="../../assets/images/twitter.png" alt="twitter"/>
+        </div>
+        <div class="social-media-wrapper">
+          <img src="../../assets/images/instagram.png" alt="instagram"/>
+        </div>
+        <div class="social-media-wrapper">
+          <img src="../../assets/images/twitch.png" alt="twitch"/>
+        </div>
       </div>
     </div>
   </footer>

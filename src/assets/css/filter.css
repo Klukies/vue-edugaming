@@ -37,12 +37,26 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
 .filter-mobile {
   width: 100%;
   display: flex;
+  justify-content: space-around;
 }
 
 @media (max-width: 1280px) {
   .filters {
     width: 100%;
   }
+
+  .filter-m {
+    width: 30%;
+    margin-bottom: 2vh;
+  }
+
+  h1, select {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   h1 {
     font-size: 1.5rem;
     margin-bottom: 0.5vh;

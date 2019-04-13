@@ -3,9 +3,9 @@
     <AuthenticationComponent @close="closeModal" v-show="isModalVisible"></AuthenticationComponent>
     <HeaderComponent @clickedLoginModal="showLoginModal()"></HeaderComponent>
     <div class="body" v-if="$auth.ready()">
-      <router-view @fixedFooter="fixedFooter"/>
+      <router-view/>
     </div>
-    <FooterComponent v-bind:class="{ fixed: isFixed}"></FooterComponent>
+    <FooterComponent></FooterComponent>
   </div>
 </template>
 
@@ -23,8 +23,7 @@ export default {
   },
   data() {
     return {
-      isModalVisible: false,
-      isFixed: false
+      isModalVisible: false
     }
   },
   methods: {
@@ -33,9 +32,6 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
-    },
-    fixedFooter() {
-      this.isFixed = !this.isFixed;
     }
   }
 }
@@ -57,6 +53,7 @@ export default {
 
 .body {
   padding-top: 12vh;
+  min-height: 86vh;
 }
 
 #coaches, .coach-full {

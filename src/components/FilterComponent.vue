@@ -9,21 +9,31 @@
             <label :for="option.title">{{ option.title }}</label>
           </li>
         </ul>
-        <ul v-else-if="key=='Prices'" v-for="option in filter">
-          <li v-for="(key,value) in option">
-            <input @change="applyFilter" @click="unselectPrice(value)" type="radio" :id="key" :value="value" v-model="priceToFilter"/>
+
+        <ul v-else-if="key=='Prices'">
+          <li v-for="(key, price) in filter">
+            <input @change="applyFilter" @click="unselectPrice(price)"
+            type="radio"
+            :id="key"
+            :value="price"
+            v-model="priceToFilter"/>
             <label :for="key">{{ key }}</label>
           </li>
         </ul>
-        <ul v-else v-for="option in filter">
-          <li v-for="value in option">
-            <input @change="applyFilter" @click="unselectRating(value)" type="radio" :id="value" :value="value" v-model="ratingToFilter"/>
-            <label :for="value">
+
+        <ul v-else>
+          <li v-for="(key, rating) in filter">
+            <input @change="applyFilter" @click="unselectRating(rating)"
+            type="radio"
+            :id="key"
+            :value="rating"
+            v-model="ratingToFilter"/>
+            <label :for="key">
               <StarRatingComponent
               :show-rating="false"
               :star-size="22"
               :inactive-color="'transparent'"
-              :rating="parseInt(value)"
+              :rating="parseInt(key)"
               :read-only="true">
               </StarRatingComponent>
             </label>
@@ -33,13 +43,37 @@
     </div>
 
     <div class="filter-mobile" v-else>
-      <div class="filter-m" v-for="(filter, key) in filters" :key='key' >
+      <div class="filter-m" v-for="(filter, key) in filters" :key='key'>
         <h1>{{ key }}</h1>
-        <ul v-if="key=='Games'">
-          <li v-for="option in filter">
-
-          </li>
-        </ul>
+        <div class="select" v-if='key === "Games"'>
+          <select v-model="mobileGameToFilter">
+            <option @click='applyMobileFilter'
+            selected="selected"
+            value="">All</option>
+            <option @click='applyMobileFilter'
+            v-for='option in filter'
+            :id='option.title'
+            :value='option.game_id'>{{ option.title }}</option>
+          </select>
+        </div>
+        <div class="select" v-else-if='key === "Prices"'>
+          <select v-model="mobilePriceToFilter">
+            <option @click='applyMobileFilter' value=null>All</option>
+            <option @click='applyMobileFilter'
+            v-for='(key, price) in filter'
+            :id='price'
+            :value='price'>{{ key }}</option>
+          </select>
+        </div>
+        <div class="select" v-else>
+          <select v-model="mobileRatingToFilter">
+            <option @click='applyMobileFilter' value='-1'>All</option>
+            <option @click='applyMobileFilter'
+            v-for='(key, rating) in filter'
+            :id='key'
+            :value='key'>{{ key }}</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
@@ -61,6 +95,9 @@ export default {
       ratingToFilter: -1,
       windowWidth: 0,
       filterSelect: false,
+      mobileGameToFilter: "",
+      mobilePriceToFilter: null,
+      mobileRatingToFilter: -1,
     }
   },
 
@@ -110,6 +147,13 @@ export default {
     },
     applyFilter() {
       this.$emit('filter', [this.gameToFilter, this.priceToFilter, this.ratingToFilter]);
+    },
+    applyMobileFilter() {
+      if (this.mobileGameToFilter === "") {
+        this.$emit('filter', [[], this.mobilePriceToFilter, parseInt(this.mobileRatingToFilter)]);
+      } else {
+        this.$emit('filter', [[parseInt(this.mobileGameToFilter)], this.mobilePriceToFilter, parseInt(this.mobileRatingToFilter)]);
+      }
     }
   }
 }
