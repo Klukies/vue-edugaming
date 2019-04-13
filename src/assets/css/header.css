@@ -69,3 +69,33 @@ nav a:hover::after {
 .router-link-exact-active {
   border-bottom: 2px solid #3A55B4;
 }
+
+@media (max-width: 1200px) {}
+@media (max-width: 1024px) {
+  #header-navigation {
+    width: 40vw;
+  }
+}
+@media (max-width: 992px) {}
+@media (max-width: 768px) {
+  #header-navigation {
+    width: 45vw;
+  }
+}
+@media (max-width: 576px) {
+  #header-logo img {
+    max-width: 40px;
+  }
+
+  #header-logo h1 {
+    font-size: 1.3rem;
+  }
+
+  #header-navigation {
+    width: 50vw;
+  }
+
+  #header-navigation a {
+    font-size: 1.3rem;
+  }
+}

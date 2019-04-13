@@ -62,3 +62,9 @@ figure img {
 figcaption {
   text-align: center;
 }
+
+@media (max-width: 1280px) {
+  .coach {
+    width: 30%;
+  }
+}
