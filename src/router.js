@@ -4,7 +4,11 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Home from './views/Home.vue'
 
-axios.defaults.baseURL = 'http://localhost:8000/api/'
+//Girlfriend network
+axios.defaults.baseURL = 'http://192.168.0.17:8000/api/'
+
+//localhost
+//axios.defaults.baseURL = 'http://localhost:8000/api/'
 
 Vue.use(Router)
 Vue.use(VueAxios, axios)

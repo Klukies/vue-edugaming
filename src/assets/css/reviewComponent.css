@@ -7,3 +7,9 @@
   font-size: 0.9rem;
   margin-bottom: 1vh;
 }
+
+@media (max-width: 650px) {
+  .review {
+    width: 50%;
+  }
+}

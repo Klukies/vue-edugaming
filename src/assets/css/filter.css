@@ -40,21 +40,21 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
   justify-content: space-around;
 }
 
+.filter-mobile select {
+  font-size: 16px;
+}
+
+.filter-mobile {
+  text-align: left;
+}
+
 @media (max-width: 1280px) {
   .filters {
     width: 100%;
   }
 
   .filter-m {
-    width: 30%;
     margin-bottom: 2vh;
-  }
-
-  h1, select {
-    width: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   h1 {

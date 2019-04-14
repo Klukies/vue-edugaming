@@ -3,7 +3,7 @@
     <AuthenticationComponent @close="closeModal" v-show="isModalVisible"></AuthenticationComponent>
     <HeaderComponent @clickedLoginModal="showLoginModal()"></HeaderComponent>
     <div class="body" v-if="$auth.ready()">
-      <router-view/>
+      <router-view @showLoginModal='showLoginModal()'/>
     </div>
     <FooterComponent></FooterComponent>
   </div>

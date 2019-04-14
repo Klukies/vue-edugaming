@@ -145,3 +145,21 @@ div.x {
   border-right-color: #fff;
   right: -2px;
 }
+
+@media (max-width: 1024px) {
+  .modal {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal {
+    width: 75vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal {
+    width: 100vw;
+  }
+}

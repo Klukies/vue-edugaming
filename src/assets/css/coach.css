@@ -48,3 +48,24 @@
   justify-content: space-between;
   margin-bottom: 3vh;
 }
+
+@media (max-width: 1024px) {
+  .coach-full {
+    width: 95vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .coach-header {
+    display: block;
+  }
+
+  .coach-image {
+    max-height: 100%;
+    margin-bottom: 2vh;
+  }
+
+  h2 {
+    margin-bottom: 1vh;
+  }
+}

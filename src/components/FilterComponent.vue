@@ -4,14 +4,14 @@
       <div class="filter" v-for="(filter, key) in filters" :key='key'>
         <h1>{{ key }}</h1>
         <ul v-if="key=='Games'">
-          <li v-for="option in filter">
+          <li v-for="option in filter" :key='option'>
             <input @change="applyFilter" type="checkbox" :id="option.title" :value="option.game_id" v-model="gameToFilter"/>
             <label :for="option.title">{{ option.title }}</label>
           </li>
         </ul>
 
         <ul v-else-if="key=='Prices'">
-          <li v-for="(key, price) in filter">
+          <li v-for="(key, price) in filter" :key='key'>
             <input @change="applyFilter" @click="unselectPrice(price)"
             type="radio"
             :id="key"
@@ -22,7 +22,7 @@
         </ul>
 
         <ul v-else>
-          <li v-for="(key, rating) in filter">
+          <li v-for="(key, rating) in filter" :key='key'>
             <input @change="applyFilter" @click="unselectRating(rating)"
             type="radio"
             :id="key"
@@ -46,32 +46,31 @@
       <div class="filter-m" v-for="(filter, key) in filters" :key='key'>
         <h1>{{ key }}</h1>
         <div class="select" v-if='key === "Games"'>
-          <select v-model="mobileGameToFilter">
-            <option @click='applyMobileFilter'
-            selected="selected"
+          <select @change='applyMobileFilter' v-model="mobileGameToFilter">
+            <option selected="selected"
             value="">All</option>
-            <option @click='applyMobileFilter'
-            v-for='option in filter'
+            <option v-for='option in filter'
             :id='option.title'
-            :value='option.game_id'>{{ option.title }}</option>
+            :value='option.game_id'
+            :key='option.game_id'>{{ option.title }}</option>
           </select>
         </div>
         <div class="select" v-else-if='key === "Prices"'>
-          <select v-model="mobilePriceToFilter">
-            <option @click='applyMobileFilter' value=null>All</option>
-            <option @click='applyMobileFilter'
-            v-for='(key, price) in filter'
+          <select @change='applyMobileFilter' v-model="mobilePriceToFilter">
+            <option value=null>All</option>
+            <option v-for='(key, price) in filter'
             :id='price'
-            :value='price'>{{ key }}</option>
+            :value='price'
+            :key='key'>{{ key }}</option>
           </select>
         </div>
         <div class="select" v-else>
-          <select v-model="mobileRatingToFilter">
-            <option @click='applyMobileFilter' value='-1'>All</option>
-            <option @click='applyMobileFilter'
-            v-for='(key, rating) in filter'
-            :id='key'
-            :value='key'>{{ key }}</option>
+          <select @change='applyMobileFilter' v-model="mobileRatingToFilter">
+            <option value='-1'>All</option>
+            <option v-for='rating in filter'
+            :id='rating'
+            :value='rating'
+            :key='rating'>{{ rating }}</option>
           </select>
         </div>
       </div>

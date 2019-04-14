@@ -19,7 +19,7 @@
         </div>
       </div>
       <figure>
-        <img :src="coach.img_url" v-bind:alt="coach.username" />
+        <img :src="coach.img_url" :alt="coach.username" />
         <figcaption>
           {{ coach.username }}
         </figcaption>

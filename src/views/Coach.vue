@@ -73,8 +73,8 @@ import StarRating from 'vue-star-rating';
 export default {
   name: 'Coach',
   components: {
-    'ReviewComponent': ReviewComponent,
-    'CreateReviewComponent': CreateReviewComponent,
+    ReviewComponent,
+    CreateReviewComponent,
     'StarRatingComponent': StarRating
   },
 
@@ -115,7 +115,9 @@ export default {
 
   methods: {
     makeReservation() {
-      if (this.reservation === '') {
+      if (this.$auth.token() === null) {
+        this.$emit('showLoginModal');
+      } else if (this.reservation === '') {
         this.reservationError = 'No date given, please select a date and time.'
       } else {
         this.reservationError = '';
@@ -136,7 +138,11 @@ export default {
       return `${year}-${month}-${day}`;
     },
     makeReview() {
-      this.showCreateForm = !this.showCreateForm;
+      if (this.$auth.token() === null) {
+        this.$emit('showLoginModal');
+      } else {
+        this.showCreateForm = !this.showCreateForm;
+      }
     },
     closeReviewModal() {
       this.showCreateForm = !this.showCreateForm;
@@ -151,7 +157,11 @@ export default {
         this.reviews = response.data;
         this.closeReviewModal();
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        if (err.response.data.error === 'Token not provided') {
+          console.log("omegalul");
+        }
+      });
     }
   }
 }

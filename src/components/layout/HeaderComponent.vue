@@ -15,7 +15,7 @@
         </li>
         <li>
           <a v-if="!$auth.check()" @click="showLoginModal">Login</a>
-          <a v-else @click.prevent="$auth.logout()">Logout</a>
+          <a v-else @click.prevent="$auth.logout({redirect:null})">Logout</a>
         </li>
       </ul>
     </nav>
@@ -30,7 +30,7 @@ export default {
     showLoginModal() {
       this.$emit('clickedLoginModal');
     }
-  }
+  },
 }
 </script>
 

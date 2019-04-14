@@ -3,7 +3,8 @@
     <div class="banners-wrapper">
       <transition-group class="banners" tag="div">
         <div v-for="banner of banners" class="banner" :key="banner.game_id">
-            <img :src="banner.img_url" @click="stopSliding" />
+            <img v-if='!isMobile' :src="banner.img_url" @click='stopSliding' :alt='banner.title' />
+            <img v-else :src="banner.old_browser_img_url" @click='stopSliding' :alt='banner.title' />
         </div>
       </transition-group>
       <button class='pause_play' v-bind:class="{playing: isPlaying}" @click="stopSliding"></button>
@@ -26,7 +27,9 @@
           <li class="coach" v-for="coach of coaches" :key='coach.id'>
             <h3>{{ coach.username }}</h3>
             <figure>
-              <img :src="coach.img_url" />
+              <div class="figure-img">
+                <img :src="coach.img_url" />
+              </div>
               <figcaption v-if='coach.summary !== null'>
                 {{ coach.summary }}
               </figcaption>
@@ -40,20 +43,33 @@
     <article class="reviews">
       <div class="article-wrapper">
         <h2>What players are saying:</h2>
+        <ul class="player-reviews">
+            <ReviewComponent
+            :review="review"
+            v-for="review in reviews"
+            :key="review.review_id">
+            </ReviewComponent>
+        </ul>
       </div>
     </article>
   </div>
 </template>
 
 <script>
+import ReviewComponent from '@/components/ReviewComponent.vue';
 export default {
   name: 'Home',
+  components: {
+    ReviewComponent
+  },
   data() {
     return {
       banners: [],
       coaches: [],
+      reviews: [],
       sliding: null,
       isPlaying: true,
+      isMobile: false,
     }
   },
 
@@ -62,9 +78,14 @@ export default {
     .then(response => {
       this.banners = response.data.games;
       this.coaches = response.data.coaches;
+      this.reviews = response.data.reviews;
       this.slideBanner();
     })
     .catch(e => {console.error(e)});
+
+    if (typeof window.orientation !== "undefined") {
+      this.isMobile = true;
+    }
   },
   methods: {
     slideBanner() {

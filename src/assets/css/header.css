@@ -99,3 +99,25 @@ nav a:hover::after {
     font-size: 1.3rem;
   }
 }
+
+@media (max-width: 380px) {
+  #header-navigation {
+    width: 54vw;
+  }
+}
+
+@media (max-width: 350px) {
+  header {
+    display: block;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+  }
+
+  nav ul {
+    justify-content: space-around;
+  }
+
+  #header-navigation {
+    width: 100%;
+  }
+}
