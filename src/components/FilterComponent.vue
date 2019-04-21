@@ -44,9 +44,9 @@
 
     <div class="filter-mobile" v-else>
       <div class="filter-m" v-for="(filter, key) in filters" :key='key'>
-        <h1>{{ key }}</h1>
         <div class="select" v-if='key === "Games"'>
-          <select @change='applyMobileFilter' v-model="mobileGameToFilter">
+          <label class="mobile-label" :for='option.title'>{{ key }}</label>
+          <select :id='option.title' @change='applyMobileFilter' v-model="mobileGameToFilter">
             <option selected="selected"
             value="">All</option>
             <option v-for='option in filter'
@@ -56,6 +56,7 @@
           </select>
         </div>
         <div class="select" v-else-if='key === "Prices"'>
+          <label class="mobile-label">{{ key }}</label>
           <select @change='applyMobileFilter' v-model="mobilePriceToFilter">
             <option value=null>All</option>
             <option v-for='(key, price) in filter'
@@ -65,6 +66,7 @@
           </select>
         </div>
         <div class="select" v-else>
+          <label class="mobile-label">{{ key }}</label>
           <select @change='applyMobileFilter' v-model="mobileRatingToFilter">
             <option value='-1'>All</option>
             <option v-for='rating in filter'

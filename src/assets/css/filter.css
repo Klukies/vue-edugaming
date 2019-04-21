@@ -7,6 +7,11 @@ h1 {
   margin-bottom: 2vh;
 }
 
+.mobile-label {
+  font-size: 2.2rem;
+  display: block;
+}
+
 ul {
   margin-bottom: 2vh;
 }
@@ -57,7 +62,7 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     margin-bottom: 2vh;
   }
 
-  h1 {
+  h1, .mobile-label {
     font-size: 1.5rem;
     margin-bottom: 0.5vh;
   }

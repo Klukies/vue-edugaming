@@ -3,11 +3,11 @@
     <div class="banners-wrapper">
       <transition-group class="banners" tag="div">
         <div v-for="banner of banners" class="banner" :key="banner.game_id">
-            <img v-if='!isMobile' :src="banner.img_url" @click='stopSliding' :alt='banner.title' />
-            <img v-else :src="banner.old_browser_img_url" @click='stopSliding' :alt='banner.title' />
+            <img v-if="!isIos" :src="banner.img_url" @click='stopSliding' :alt='banner.title'>
+            <img v-else :src="banner.old_browser_img_url" @click='stopSliding' :alt='banner.title'>
         </div>
       </transition-group>
-      <button class='pause_play' v-bind:class="{playing: isPlaying}" @click="stopSliding"></button>
+      <button aria-label="pause_play_button" class='pause_play'  v-bind:class="{playing: isPlaying}" @click="stopSliding"></button>
     </div>
     <article class="method">
       <div class="article-wrapper">
@@ -28,7 +28,7 @@
             <h3>{{ coach.username }}</h3>
             <figure>
               <div class="figure-img">
-                <img :src="coach.img_url" />
+                <img :src="coach.img_url" :alt='coach.username'/>
               </div>
               <figcaption v-if='coach.summary !== null'>
                 {{ coach.summary }}
@@ -69,7 +69,7 @@ export default {
       reviews: [],
       sliding: null,
       isPlaying: true,
-      isMobile: false,
+      isIos: false,
     }
   },
 
@@ -82,9 +82,8 @@ export default {
       this.slideBanner();
     })
     .catch(e => {console.error(e)});
-
-    if (typeof window.orientation !== "undefined") {
-      this.isMobile = true;
+    if(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+      this.isIos = true;
     }
   },
   methods: {

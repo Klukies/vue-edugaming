@@ -2,7 +2,7 @@
   <footer>
     <div class="footer-wrapper">
       <div class="logo">
-        <img src="../../assets/images/finished_logo.png"/>
+        <img src="../../assets/images/logo.png" alt="logo of EduGaming"/>
       </div>
       <a :href="`mailto:${infoMail}`">{{ infoMail }}</a>
       <a :href="`tel:${infoPhone}`">{{ infoPhone }}</a>

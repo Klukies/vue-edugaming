@@ -5,11 +5,9 @@ import './registerServiceWorker'
 import VueCtkDateTimePicker from 'vue-ctk-date-time-picker'
 import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css'
 import VeeValidate from 'vee-validate'
-import WebpPlugun from 'vue-webp-plugin'
 
 Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker)
 Vue.use(VeeValidate)
-Vue.use(WebpPlugun)
 
 Vue.config.productionTip = false
 
