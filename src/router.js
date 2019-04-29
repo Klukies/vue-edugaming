@@ -8,7 +8,10 @@ import Home from './views/Home.vue'
 //axios.defaults.baseURL = 'https://192.168.0.153/api/'
 
 //localhost
-axios.defaults.baseURL = 'http://localhost:8000/api/'
+//axios.defaults.baseURL = 'http://localhost:8000/api/'
+
+//compbell
+axios.defaults.baseURL = 'https://laravel.lukas-cornille.be/api/'
 
 Vue.use(Router)
 Vue.use(VueAxios, axios)

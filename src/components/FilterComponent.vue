@@ -4,7 +4,7 @@
       <div class="filter" v-for="(filter, key) in filters" :key='key'>
         <h1>{{ key }}</h1>
         <ul v-if="key=='Games'">
-          <li v-for="option in filter" :key='option'>
+          <li v-for="option in filter" :key='option.title'>
             <input @change="applyFilter" type="checkbox" :id="option.title" :value="option.game_id" v-model="gameToFilter"/>
             <label :for="option.title">{{ option.title }}</label>
           </li>
@@ -45,8 +45,8 @@
     <div class="filter-mobile" v-else>
       <div class="filter-m" v-for="(filter, key) in filters" :key='key'>
         <div class="select" v-if='key === "Games"'>
-          <label class="mobile-label" :for='option.title'>{{ key }}</label>
-          <select :id='option.title' @change='applyMobileFilter' v-model="mobileGameToFilter">
+          <label class="mobile-label">{{ key }}</label>
+          <select @change='applyMobileFilter' v-model="mobileGameToFilter">
             <option selected="selected"
             value="">All</option>
             <option v-for='option in filter'
