@@ -22,18 +22,18 @@
         </ul>
 
         <ul v-else>
-          <li v-for="(key, rating) in filter" :key='key'>
+          <li v-for="rating in filter" :key='rating'>
             <input @change="applyFilter" @click="unselectRating(rating)"
             type="radio"
-            :id="key"
+            :id="rating"
             :value="rating"
             v-model="ratingToFilter"/>
-            <label :for="key">
+            <label :for="rating">
               <StarRatingComponent
               :show-rating="false"
               :star-size="22"
               :inactive-color="'transparent'"
-              :rating="parseInt(key)"
+              :rating="parseInt(rating)"
               :read-only="true">
               </StarRatingComponent>
             </label>
