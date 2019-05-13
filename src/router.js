@@ -8,10 +8,10 @@ import Home from './views/Home.vue'
 //axios.defaults.baseURL = 'https://192.168.0.153/api/'
 
 //localhost
-axios.defaults.baseURL = 'http://localhost:8000/api/'
+//axios.defaults.baseURL = 'http://localhost:8000/api/'
 
 //compbell
-//axios.defaults.baseURL = 'https://laravel.lukas-cornille.be/api/'
+axios.defaults.baseURL = 'https://laravel.lukas-cornille.be/api/'
 
 Vue.use(Router)
 Vue.use(VueAxios, axios)
@@ -38,7 +38,10 @@ const router = new Router({
       name: 'Coach',
       component: () => import('./views/Coach.vue')
     }
-  ]
+  ],
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  }
 })
 
 Vue.router = router

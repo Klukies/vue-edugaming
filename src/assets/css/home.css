@@ -95,6 +95,11 @@ figcaption {
   width: 50%;
 }
 
+.coach-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media (max-width: 1024px) {
   .article-wrapper {
     width: 80vw;

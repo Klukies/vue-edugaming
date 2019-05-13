@@ -25,16 +25,18 @@
         <h2>Featured coaches:</h2>
         <ul class="coaches">
           <li class="coach" v-for="coach of coaches" :key='coach.id'>
-            <h3>{{ coach.username }}</h3>
-            <figure>
-              <div class="figure-img">
-                <img :src="coach.img_url" :alt='coach.username'/>
-              </div>
-              <figcaption v-if='coach.summary !== null'>
-                {{ coach.summary }}
-              </figcaption>
-              <figcaption v-else>Coach hasn't given a summary yet.</figcaption>
-            </figure>
+            <router-link :to="{ name: 'Coach', params: { username: coach.username } }" class="coach-link">
+              <h3>{{ coach.username }}</h3>
+              <figure>
+                <div class="figure-img">
+                  <img :src="coach.img_url" :alt='coach.username'/>
+                </div>
+                <figcaption v-if='coach.summary !== null'>
+                  {{ coach.summary }}
+                </figcaption>
+                <figcaption v-else>Coach hasn't given a summary yet.</figcaption>
+              </figure>
+            </router-link>
           </li>
         </ul>
         <router-link :to="{ name: 'Coaches' }" class="btn">Find my coach</router-link>
