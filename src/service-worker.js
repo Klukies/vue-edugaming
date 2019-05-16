@@ -16,7 +16,7 @@ if (workbox) {
 
     workbox.routing.registerRoute(
       /\.(?:png|gif|jpg|jpeg|webp|svg)$/,
-      new workbox.strategies.CacheFirst({
+      new workbox.strategies.NetworkFirst({
         cacheName: 'images',
         plugins: [
           new workbox.expiration.Plugin({
@@ -29,7 +29,7 @@ if (workbox) {
 
     workbox.routing.registerRoute(
       new RegExp('^https://laravel.lukas-cornille.be/images'),
-      new workbox.strategies.CacheFirst({
+      new workbox.strategies.NetworkFirst({
         cacheName: 'image-cache',
         plugins: [
           new workbox.cacheableResponse.Plugin({
@@ -40,8 +40,20 @@ if (workbox) {
     );
 
     workbox.routing.registerRoute(
+      new RegExp('^https://node-edugaming.herokuapp.com/images/'),
+      new workbox.strategies.NetworkFirst({
+        cacheName: 'coach-image-cache',
+        plugins: [
+          new workbox.cacheableResponse.Plugin({
+            statuses: [0, 200],
+          })
+        ]
+      })
+    )
+
+    workbox.routing.registerRoute(
       new RegExp('^https://laravel.lukas-cornille.be/api/home'),
-      new workbox.strategies.CacheFirst({
+      new workbox.strategies.NetworkFirst({
         cacheName: 'home-cache',
         plugins: [
           new workbox.cacheableResponse.Plugin({
@@ -53,7 +65,7 @@ if (workbox) {
 
     workbox.routing.registerRoute(
       new RegExp('^https://laravel.lukas-cornille.be/api/filters'),
-      new workbox.strategies.CacheFirst({
+      new workbox.strategies.NetworkFirst({
         cacheName: 'filters-cache',
         plugins: [
           new workbox.cacheableResponse.Plugin({
